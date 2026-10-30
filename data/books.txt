@@ -1,0 +1,100 @@
+1|Cien anos de soledad|Gabriel Garcia Marquez|1967|Ficcion|free
+2|Don Quijote de la Mancha|Miguel de Cervantes|1605|Clasico|free
+3|1984|George Orwell|1949|Distopia|free
+4|El Principito|Antoine de Saint-Exupery|1943|Infantil|free
+5|Un mundo feliz|Aldous Huxley|1932|Distopia|free
+6|Orgullo y prejuicio|Jane Austen|1813|Romance|free
+7|Fahrenheit 451|Ray Bradbury|1953|Ciencia Ficcion|free
+8|Crimen y castigo|Fiodor Dostoievski|1866|Clasico|free
+9|El hobbit|J.R.R. Tolkien|1937|Fantasia|free
+10|Pedro Paramo|Juan Rulfo|1955|Ficcion|free
+11|La sombra del viento|Carlos Ruiz Zafon|2001|Misterio|free
+12|Rayuela|Julio Cortazar|1963|Ficcion|free
+13|El senor de los anillos|J.R.R. Tolkien|1954|Fantasia|free
+14|Metamorfosis|Franz Kafka|1915|Ficcion|free
+15|El alquimista|Paulo Coelho|1988|Ficcion|free
+16|Cien mil leguas de viaje submarino|Julio Verne|1870|Aventura|free
+17|El nombre de la rosa|Umberto Eco|1980|Misterio|free
+18|La ciudad y los perros|Mario Vargas Llosa|1963|Ficcion|free
+19|Ensayo sobre la ceguera|Jose Saramago|1995|Ficcion|free
+20|El retrato de Dorian Gray|Oscar Wilde|1890|Clasico|free
+21|Los miserables|Victor Hugo|1862|Clasico|free
+22|Dracula|Bram Stoker|1897|Terror|free
+23|Frankenstein|Mary Shelley|1818|Terror|free
+24|El gran Gatsby|F. Scott Fitzgerald|1925|Clasico|free
+25|Matar a un ruisenor|Harper Lee|1960|Ficcion|free
+26|La odisea|Homero|-800|Epico|free
+27|La iliada|Homero|-800|Epico|free
+28|La divina comedia|Dante Alighieri|1320|Poesia|free
+29|Hamlet|William Shakespeare|1601|Drama|free
+30|Romeo y Julieta|William Shakespeare|1597|Drama|free
+31|El aleph|Jorge Luis Borges|1949|Ficcion|free
+32|Ficciones|Jorge Luis Borges|1944|Ficcion|free
+33|Cumbres borrascosas|Emily Bronte|1847|Romance|free
+34|Jane Eyre|Charlotte Bronte|1847|Romance|free
+35|Guerra y paz|Leon Tolstoi|1869|Historico|free
+36|Anna Karenina|Leon Tolstoi|1878|Clasico|free
+37|Madame Bovary|Gustave Flaubert|1857|Clasico|free
+38|El tunel|Ernesto Sabato|1948|Psicologico|free
+39|La casa de los espiritus|Isabel Allende|1982|Realismo Magico|free
+40|Como agua para chocolate|Laura Esquivel|1989|Realismo Magico|free
+41|Dune|Frank Herbert|1965|Ciencia Ficcion|free
+42|Fundacion|Isaac Asimov|1951|Ciencia Ficcion|free
+43|Yo, robot|Isaac Asimov|1950|Ciencia Ficcion|free
+44|El juego de Ender|Orson Scott Card|1985|Ciencia Ficcion|free
+45|Neuromante|William Gibson|1984|Ciencia Ficcion|free
+46|El resplandor|Stephen King|1977|Terror|free
+47|It|Stephen King|1986|Terror|free
+48|Misery|Stephen King|1987|Terror|free
+49|El codigo Da Vinci|Dan Brown|1998|Misterio|free
+50|Angeles y demonios|Dan Brown|2000|Misterio|free
+51|Harry Potter y la piedra filosofal|J.K. Rowling|1997|Fantasia|free
+52|Harry Potter y la camara secreta|J.K. Rowling|1998|Fantasia|free
+53|El guardian entre el centeno|J.D. Salinger|1951|Ficcion|free
+54|El viejo y el mar|Ernest Hemingway|1952|Ficcion|free
+55|Por quien doblan las campanas|Ernest Hemingway|1940|Historico|free
+56|Las uvas de la ira|John Steinbeck|1939|Clasico|free
+57|De ratones y hombres|John Steinbeck|1937|Drama|free
+58|Fahrenheit 451|Ray Bradbury|1953|Ciencia Ficcion|free
+59|Cronica de una muerte anunciada|Gabriel Garcia Marquez|1981|Ficcion|free
+60|El amor en los tiempos del colera|Gabriel Garcia Marquez|1985|Romance|free
+61|El conde de Montecristo|Alejandro Dumas|1844|Aventura|free
+62|Los tres mosqueteros|Alejandro Dumas|1844|Aventura|free
+63|Viaje al centro de la Tierra|Julio Verne|1864|Aventura|free
+64|La isla del tesoro|Robert Louis Stevenson|1883|Aventura|free
+65|El extrano caso del dr. Jekyll y mr. Hyde|Robert Louis Stevenson|1886|Terror|free
+66|Las aventuras de Sherlock Holmes|Arthur Conan Doyle|1892|Misterio|free
+67|El sabueso de los Baskerville|Arthur Conan Doyle|1902|Misterio|free
+68|Diez negritos|Agatha Christie|1939|Misterio|free
+69|Asesinato en el Orient Express|Agatha Christie|1934|Misterio|free
+70|Sapiens|Yuval Noah Harari|2011|Divulgacion|free
+71|Homo Deus|Yuval Noah Harari|2015|Divulgacion|free
+72|El gen egoista|Richard Dawkins|1976|Ciencia|free
+73|Cosmos|Carl Sagan|1980|Ciencia|free
+74|Breve historia del tiempo|Stephen Hawking|1988|Ciencia|free
+75|El arte de la guerra|Sun Tzu|-500|Filosofia|free
+76|El principe|Nicolas Maquiavelo|1532|Filosofia|free
+77|Asi hablo Zaratustra|Friedrich Nietzsche|1883|Filosofia|free
+78|Mas alla del bien y del mal|Friedrich Nietzsche|1886|Filosofia|free
+79|El banquete|Platon|-385|Filosofia|free
+80|La republica|Platon|-375|Filosofia|free
+81|Moby Dick|Herman Melville|1851|Aventura|free
+82|La metamorfosis|Franz Kafka|1915|Ficcion|free
+83|El proceso|Franz Kafka|1925|Ficcion|free
+84|El castillo|Franz Kafka|1926|Ficcion|free
+85|Siddhartha|Hermann Hesse|1922|Filosofia|free
+86|El lobo estepario|Hermann Hesse|1927|Ficcion|free
+87|Demian|Hermann Hesse|1919|Ficcion|free
+88|Cantar de mio Cid|Anonimo|1200|Poesia|free
+89|La Celestina|Fernando de Rojas|1499|Drama|free
+90|Lazarillo de Tormes|Anonimo|1554|Novela Picaresca|free
+91|Campos de Castilla|Antonio Machado|1912|Poesia|free
+92|Romancero gitano|Federico Garcia Lorca|1928|Poesia|free
+93|La casa de Bernarda Alba|Federico Garcia Lorca|1936|Drama|free
+94|Bodas de sangre|Federico Garcia Lorca|1933|Drama|free
+95|Los pasos perdidos|Alejo Carpentier|1953|Ficcion|free
+96|El reino de este mundo|Alejo Carpentier|1949|Ficcion|free
+97|La colmena|Camilo Jose Cela|1951|Ficcion|free
+98|La familia de Pascual Duarte|Camilo Jose Cela|1942|Ficcion|free
+99|El perfume|Patrick Suskind|1985|Misterio|free
+100|La tregua|Mario Benedetti|1960|Romance|free

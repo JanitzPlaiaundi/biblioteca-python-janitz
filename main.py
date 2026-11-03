@@ -96,6 +96,6 @@ def add_partner():
     pass
 
 def finish_program():
-    pass
+    exit("Programa finalizado.")
 
 menu()

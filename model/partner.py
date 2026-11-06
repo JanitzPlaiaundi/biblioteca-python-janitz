@@ -7,5 +7,4 @@ class Partner:
         self.books = books
 
     def __str__(self):
-
         return f'Información del socio "{self.name}":\n  Codigo: {self.code}\n  Nombre: {self.name}\n  Email: {self.email}\n  Teléfono: {self.phone}\n  Libros: { ", ".join([book.title for book in self.books]) if self.books else "No tiene libros" }\n'

@@ -1,7 +1,9 @@
 from model.book import Book
+from model.partner import Partner
 from exceptions.OutOfMenuRangeError import OutOfMenuRangeError
-books = []
+
 def charge_books():
+    books = []
     try:
         with open("data/books.txt", "r",encoding="utf-8") as f:
             for line in f:
@@ -14,6 +16,31 @@ def charge_books():
     except FileNotFoundError as e:
         print(e.strerror)
     return books
+
+def charge_partners(charged_books):
+    partners = []
+    try:
+        with open("data/partners.txt", "r",encoding="utf-8") as f:
+            for line in f:
+                if(line == ""):
+                    break
+                partner_info = line.split("|")
+                parter_book_codes = partner_info[4].split(",")
+
+                if len(parter_book_codes) > 0:
+                    book_list = []
+                   
+                    for id in parter_book_codes:
+                        for book in charged_books:
+                            if book.code == id:
+                                book_list.append(book)
+                    partner = Partner(partner_info[0], partner_info[1], partner_info[2], partner_info[3], book_list)
+                else:
+                    partner = Partner(partner_info[0], partner_info[1], partner_info[2], partner_info[3])
+                partners.append(partner)
+    except FileNotFoundError as e:
+        print(e.strerror)
+    return partners
 
 def menu():
     print("Selecciona escribiendo con numeros las siguientes acciones: ")

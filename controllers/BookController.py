@@ -26,4 +26,14 @@ class BookController:
             if book.state == "Libre":
                 available_books_list.append(book)
         return available_books_list
-        
+
+
+    #Devuelve el primer libro con la palabra    
+    def search_by_name(self, word):
+        books = self.charge_books()
+        books_searched = []
+        for book in books:
+            if word.lower() in book.title.lower():
+                books_searched.append(book)
+
+        return books_searched

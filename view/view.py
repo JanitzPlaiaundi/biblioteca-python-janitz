@@ -4,8 +4,10 @@ class View:
         self.bookController = bookController
         self.partnerController = partnerController
 
+    
+
     def menu_options(self):
-        print("Selecciona escribiendo con numeros las siguientes acciones: ")
+        print("Selecciona escribiendo con números las siguientes acciones: ")
         print("1. Listar todos los libros")
         print("2. Listar libros disponibles")
         print("3. Buscar libro por titulo")
@@ -42,7 +44,7 @@ class View:
                 case 2:
                     self.available_books()
                 case 3:
-                    pass
+                    self.search_book_by_name()
                 case 4:
                     pass
                 case 5:
@@ -80,3 +82,11 @@ class View:
         books = self.bookController.available_books()
         for book in books:
             print(book)
+
+    def search_book_by_name(self):
+        word_to_search = input("Escribe el nombre: ")
+        books = self.bookController.search_by_name(word_to_search)
+        if len(books) > 0:
+            self.print_list(books, "book")
+        else:
+            print("No se ha encontrado ningun libro con ese nombre")

@@ -75,7 +75,7 @@ class View:
         
 
     def show_books(self):
-        books = self.bookController.charge_books()
+        books = self.bookController.list_books()
         self.print_list(books, "book")
     
     def available_books(self):

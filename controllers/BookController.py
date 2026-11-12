@@ -1,6 +1,4 @@
 from model.book import Book
-
-
 class BookController:
     def __init__(self):
         self.books = []
@@ -40,3 +38,22 @@ class BookController:
                 books_searched.append(book)
 
         return books_searched
+
+
+    def search_by_id(self, id):
+
+        self.charge_books()
+        for book in self.books:
+            if id == book.code:
+                return book
+        return None
+
+    def lend_book(self, book):
+        book.state = "lent"
+        return self.write_books()
+
+    def write_books(self):
+            with open("data/books.txt", "w", encoding="utf-8") as f:
+                for book in self.books:
+                    f.write(f"{book.code}|{book.title}|{book.author}|{book.year}|{book.category}|{book.state}\n")
+            return "Se han actualizado los libros con exito"

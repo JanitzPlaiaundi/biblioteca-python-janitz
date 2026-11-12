@@ -46,7 +46,7 @@ class View:
                 case 3:
                     self.search_book_by_name()
                 case 4:
-                    pass
+                    self.assign_book_to_partner()
                 case 5:
                     pass
                 case 6:
@@ -90,3 +90,12 @@ class View:
             self.print_list(books, "book")
         else:
             print("No se ha encontrado ningun libro con ese nombre")
+
+    def assign_book_to_partner(self):
+        book_id = input("Escribe el código del libro: ")
+        partner_id = input("Escribe el código del socio: ")
+        book =  self.bookController.search_by_id(book_id)
+        updated_partners = self.partnerController.assign_book(book_id, partner_id)
+        updated_books = self.bookController.lend_book(book)
+        print(updated_partners)
+        print(updated_books)

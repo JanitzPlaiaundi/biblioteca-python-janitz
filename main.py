@@ -1,6 +1,6 @@
 from view.view import View
-from controllers.BookController import BookController
-from controllers.PartnerController import PartnerController
+from controllers.book_controller import BookController
+from controllers.partner_controller import PartnerController
 
 bookController = BookController()
 partnerController = PartnerController()

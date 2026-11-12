@@ -48,8 +48,9 @@ class BookController:
                 return book
         return None
 
-    def lend_book(self, book):
-        book.state = "lent"
+    def lend_book(self, book_id):
+        book = self.search_by_id(book_id)
+        book.state = "Ocupado"
         return self.write_books()
 
     def write_books(self):
@@ -57,3 +58,8 @@ class BookController:
                 for book in self.books:
                     f.write(f"{book.code}|{book.title}|{book.author}|{book.year}|{book.category}|{book.state}\n")
             return "Se han actualizado los libros con exito"
+
+    def return_book(self, book_id):
+        book = self.search_by_id(book_id)
+        book.state = "Libre"
+        return self.write_books()

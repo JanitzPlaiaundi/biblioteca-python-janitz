@@ -48,7 +48,7 @@ class View:
                 case 4:
                     self.assign_book_to_partner()
                 case 5:
-                    pass
+                    self.return_book()
                 case 6:
                     pass
                 case 7:
@@ -94,8 +94,17 @@ class View:
     def assign_book_to_partner(self):
         book_id = input("Escribe el código del libro: ")
         partner_id = input("Escribe el código del socio: ")
-        book =  self.bookController.search_by_id(book_id)
-        updated_partners = self.partnerController.assign_book(book_id, partner_id)
-        updated_books = self.bookController.lend_book(book)
-        print(updated_partners)
-        print(updated_books)
+        partner_res = self.partnerController.assign_book(book_id, partner_id)
+        book_res = self.bookController.lend_book(book_id)
+        print(partner_res)
+        print(book_res)
+
+
+    def return_book(self):
+        book_id = input("Escribe el código del libro: ")
+        partner_id = input("Escribe el código del socio: ")
+        partner_res = self.partnerController.return_book(book_id, partner_id)
+        book_res = self.bookController.return_book(book_id)
+        print(partner_res)
+        print(book_res)
+

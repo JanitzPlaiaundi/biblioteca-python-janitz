@@ -22,17 +22,22 @@ class PartnerController:
 
     def assign_book(self, book_id, partner_id):
         self.charge_partners()
-        selected_partner = None
         for partner in self.partners:
             if partner.code == partner_id:
-                selected_partner = partner
-                selected_partner.books.append(book_id)
-                break
+                partner.books.append(book_id)
+                return self.write_partners()
 
-        if selected_partner is None:
-            return f"No se encontró un socio con el código {partner_id}."
+        return f"No se encontró un socio con el código {partner_id}."
 
-        return self.write_partners()
+    def return_book(self, book_id, partner_id):
+        self.charge_partners()
+        for partner in self.partners:
+            if partner.code == partner_id:
+                partner.books.remove(book_id)
+                return self.write_partners()
+        return f"No se encontró un socio con el código {partner_id}."
+
+        
 
     def write_partners(self):
         with open("data/partners.txt", "w", encoding="utf-8") as f:

@@ -50,7 +50,7 @@ class View:
                 case 5:
                     self.return_book()
                 case 6:
-                    pass
+                    self.show_partners_with_books()
                 case 7:
                     pass
                 case 8:
@@ -63,6 +63,10 @@ class View:
     def print_book(self, book):
         print(f'{book.code} | {book.title}')
 
+    def print_partner(self, partner):
+        print(f'{partner.code}|{partner.name}|{partner.email}|{partner.phone}|{','.join(partner.books)}')
+
+    
     def print_list(self, list, format= "default" ):
         if format == "default":
             for string in list:
@@ -72,6 +76,9 @@ class View:
             for book in list:
                 self.print_book(book)
 
+        if format == "partner":
+            for partner in list:
+                self.print_partner(partner)
         
 
     def show_books(self):
@@ -108,3 +115,10 @@ class View:
         print(partner_res)
         print(book_res)
 
+    def show_partners_with_books(self):
+        partners = self.partnerController.partners_with_book()
+
+        if len(partners) > 0:
+            self.print_list(partners, "partner")
+        else:
+            print("No hay socios con libro")

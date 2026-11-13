@@ -44,3 +44,13 @@ class PartnerController:
             for partner in self.partners:
                 f.write(f"{partner.code}|{partner.name}|{partner.email}|{partner.phone}|{','.join(partner.books)}\n")
         return "Se han actualizado los socios con exito"
+
+    def partners_with_book(self):
+        self.charge_partners()
+        partners_with_book = []
+        for partner in self.partners:
+            if partner.books:
+                partners_with_book.append(partner)
+        return partners_with_book
+
+

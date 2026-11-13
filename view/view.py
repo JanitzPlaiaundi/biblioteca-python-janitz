@@ -1,13 +1,13 @@
-from exceptions.OutOfMenuRangeError import OutOfMenuRangeError
+from exceptions.out_of_menu_range_error import OutOfMenuRangeError
 class View:
-    def __init__(self, bookController, partnerController):
-        self.bookController = bookController
-        self.partnerController = partnerController
+    def __init__(self, book_controller, partner_controller):
+        self.book_controller = book_controller
+        self.partner_controller = partner_controller
 
     def execute(self):
         try:   
-            print(self.bookController.load_books())
-            print(self.partnerController.load_partners())
+            print(self.book_controller.load_books())
+            print(self.partner_controller.load_partners())
             self.menu()
         except Exception as e:
             print(e)
@@ -61,8 +61,8 @@ class View:
                         case _:
                             pass
                 case 8: 
-                    print(self.partnerController.write_partners())
-                    print(self.bookController.write_books())
+                    print(self.partner_controller.write_partners())
+                    print(self.book_controller.write_books())
                 case _:
                     print("Opción no válida.")
 
@@ -75,12 +75,12 @@ class View:
                     else:
                         print(f'{i}. {option}')
     
-                firstOption = 1
-                lastOption = len(options) - 1
+                first_option = 1
+                last_option = len(options) - 1
                 try:
                     option = int(input("Opción: "))
-                    if option < firstOption or option > lastOption:
-                        raise OutOfMenuRangeError("Opcion invalida, el número debe estar entre " + str(firstOption) + " y " + str(lastOption) + ".", option)
+                    if option < first_option or option > last_option:
+                        raise OutOfMenuRangeError("Opcion invalida, el número debe estar entre " + str(first_option) + " y " + str(last_option) + ".", option)
                     else:
                         return option
                 except ValueError:
@@ -119,16 +119,16 @@ class View:
 
     #Recoger o modificar datos
     def show_books(self):
-        books = self.bookController.list_books()
+        books = self.book_controller.list_books()
         self.print_list(books, "book")
     
     def available_books(self):
-        books = self.bookController.available_books()
+        books = self.book_controller.available_books()
         self.print_list(books, "book")
 
     def search_book_by_name(self):
         word_to_search = input("Escribe el nombre: ")
-        books = self.bookController.search_by_name(word_to_search)
+        books = self.book_controller.search_by_name(word_to_search)
         if len(books) > 0:
             self.print_list(books, "book")
         else:
@@ -138,8 +138,8 @@ class View:
         try:
             book_id = int(input("Escribe el código del libro: "))
             partner_id = int(input("Escribe el código del socio: "))
-            self.partnerController.assign_book(book_id, partner_id)
-            self.bookController.lend_book(book_id)
+            self.partner_controller.assign_book(book_id, partner_id)
+            self.book_controller.lend_book(book_id)
             print("Libro asignado correctamente")
         except Exception as e:
             print("Error al reservar el libro")
@@ -148,15 +148,15 @@ class View:
         try:
             book_id = int(input("Escribe el código del libro: "))
             partner_id = int(input("Escribe el código del socio: "))
-            self.partnerController.return_book(book_id, partner_id)
-            self.bookController.return_book(book_id)
+            self.partner_controller.return_book(book_id, partner_id)
+            self.book_controller.return_book(book_id)
             print("Libro devuelto correctamente")
         except Exception as e:
             print("Error al devolver el libro")
 
 
     def show_partners_with_books(self):
-        partners = self.partnerController.partners_with_book()
+        partners = self.partner_controller.partners_with_book()
         if len(partners) > 0:
             self.print_list(partners, "partner")
         else:
@@ -168,7 +168,7 @@ class View:
             name = input("Nombre: ")
             email = input("Email: ")
             phone = input("Numero: ")
-            self.partnerController.create_partner(name, email, phone)
+            self.partner_controller.create_partner(name, email, phone)
             print("Socio creado correctamente")
         except:
             print("Error al crear el socio")
@@ -179,7 +179,7 @@ class View:
             author = input("Autor: ")
             year = input("Año de lanzamiento: ")
             category = input("Categoria: ")
-            self.bookController.create_book(title, author, year, category)
+            self.book_controller.create_book(title, author, year, category)
             print("Libro añadido correctamente")
         except:
             print("Error al añadir el libro")

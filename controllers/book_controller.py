@@ -3,7 +3,7 @@ from controllers.log_controller import Log_controller
 class BookController:
     def __init__(self):
         self.books = []
-        self.logger = Log_controller
+        self.logger = Log_controller()
 
     def load_books(self):
         self.books = []

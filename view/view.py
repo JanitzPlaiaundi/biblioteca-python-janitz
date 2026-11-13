@@ -14,14 +14,13 @@ class View:
         print("4. Asignar libro a socio")
         print("5. Devolver libro de un socio")
         print("6. Mostrar socios con libro")
-        print("7. Añadir libro")
-        print("8. Añadir socio")
-        print("9. Salir del programa")
+        print("7. Añadir socios o libros")
+        print("8. Salir del programa")
 
 
         while True:
             firstOption = 1
-            lastOption = 9
+            lastOption = 8
             try:
                 option = int(input("Opción: "))
                 if option < firstOption or option > lastOption:
@@ -52,11 +51,21 @@ class View:
                 case 6:
                     self.show_partners_with_books()
                 case 7:
-                    pass
+                    print("1. Crear socio")
+                    print("2. Crear libro")
+                    print("3. Volver atras")
+
+                    create_option = int(input("Opcion: "))
+
+                    match create_option:
+                        case 1:
+                            self.create_partner_view()
+                        case 2:
+                            self.create_book_view()
+                        case _:
+                            pass
                 case 8:
-                    pass
-                case 9:
-                    pass
+                    exit()
                 case _:
                     print("Opción no válida.")
 
@@ -122,3 +131,17 @@ class View:
             self.print_list(partners, "partner")
         else:
             print("No hay socios con libro")
+
+
+    def create_partner_view(self):
+        name = input("Nombre: ")
+        email = input("Email: ")
+        phone = input("Numero: ")
+        print(self.partnerController.create_partner(name, email, phone))
+
+    def create_book_view(self):
+        title = input("Titulo: ")
+        author = input("Autor: ")
+        year = input("Año de lanzamiento: ")
+        category = input("Categoria: ")
+        print(self.bookController.create_book(title, author, year, category))

@@ -4,39 +4,40 @@ class View:
         self.bookController = bookController
         self.partnerController = partnerController
 
-    
-
-    def menu_options(self):
-        print("Selecciona escribiendo con números las siguientes acciones: ")
-        print("1. Listar todos los libros")
-        print("2. Listar libros disponibles")
-        print("3. Buscar libro por titulo")
-        print("4. Asignar libro a socio")
-        print("5. Devolver libro de un socio")
-        print("6. Mostrar socios con libro")
-        print("7. Añadir socios o libros")
-        print("8. Salir del programa")
+    def execute(self):
+        try:   
+            print(self.bookController.load_books())
+            print(self.partnerController.load_partners())
+            self.menu()
+        except Exception as e:
+            print(e)
 
 
-        while True:
-            firstOption = 1
-            lastOption = 8
-            try:
-                option = int(input("Opción: "))
-                if option < firstOption or option > lastOption:
-                    raise OutOfMenuRangeError("Opcion invalida, el número debe estar entre " + str(firstOption) + " y " + str(lastOption) + ".", option)
-                else:
-                    return option
-            except ValueError:
-                print("Entrada inválida. Por favor, ingresa un número entero.")
-            except OutOfMenuRangeError as e:
-                print("Error: ",e)
-                print("Valor incorrecto ingresado: ", e.value)
+    #MENUS
+
+    main_menu_options = [
+        "Selecciona escribiendo con números las siguientes acciones: ",
+        "Listar todos los libros",
+        "Listar libros disponibles",
+        "Buscar libro por titulo",
+        "Asignar libro a socio",
+        "Devolver libro de un socio",
+        "Mostrar socios con libro",
+        "Añadir socios o libros",
+        "Salir del programa"
+    ]    
+
+    create_menu_option = [
+        "Selecciona escribiendo con números las siguientes acciones: ",
+        "Crear socio",
+        "Crear libro",
+        "Volver atras"
+    ]
 
     def menu(self):
         num = 0
-        while num != 9:
-            num = self.menu_options()
+        while num != 8:
+            num = self.menu_options(self.main_menu_options)
             match num:
                 case 1:
                     self.show_books()
@@ -51,12 +52,7 @@ class View:
                 case 6:
                     self.show_partners_with_books()
                 case 7:
-                    print("1. Crear socio")
-                    print("2. Crear libro")
-                    print("3. Volver atras")
-
-                    create_option = int(input("Opcion: "))
-
+                    create_option = self.menu_options(self.create_menu_option)
                     match create_option:
                         case 1:
                             self.create_partner_view()
@@ -64,18 +60,42 @@ class View:
                             self.create_book_view()
                         case _:
                             pass
-                case 8:
-                    exit()
+                case 8: 
+                    print(self.partnerController.write_partners())
+                    print(self.bookController.write_books())
                 case _:
                     print("Opción no válida.")
 
+    def menu_options(self, options):
+            while True:
+    
+                for i, option in enumerate(options):
+                    if i == 0:
+                        print(option)
+                    else:
+                        print(f'{i}. {option}')
+    
+                firstOption = 1
+                lastOption = len(options) - 1
+                try:
+                    option = int(input("Opción: "))
+                    if option < firstOption or option > lastOption:
+                        raise OutOfMenuRangeError("Opcion invalida, el número debe estar entre " + str(firstOption) + " y " + str(lastOption) + ".", option)
+                    else:
+                        return option
+                except ValueError:
+                    print("Entrada inválida. Por favor, ingresa un número entero.")
+                except OutOfMenuRangeError as e:
+                    print("Error: ",e)
+                    print("Valor incorrecto ingresado: ", e.value)
+
+    #Pintar con formatos
     def print_book(self, book):
         print(f'{book.code} | {book.title}')
 
     def print_partner(self, partner):
-        print(f'{partner.code}|{partner.name}|{partner.email}|{partner.phone}|{','.join(partner.books)}')
+        print(f'{partner.code}|{partner.name}|{partner.email}|{partner.phone}')
 
-    
     def print_list(self, list, format= "default" ):
         if format == "default":
             for string in list:
@@ -88,16 +108,15 @@ class View:
         if format == "partner":
             for partner in list:
                 self.print_partner(partner)
-        
 
+    #Recoger o modificar datos
     def show_books(self):
         books = self.bookController.list_books()
         self.print_list(books, "book")
     
     def available_books(self):
         books = self.bookController.available_books()
-        for book in books:
-            print(book)
+        self.print_list(books, "book")
 
     def search_book_by_name(self):
         word_to_search = input("Escribe el nombre: ")
@@ -108,25 +127,28 @@ class View:
             print("No se ha encontrado ningun libro con ese nombre")
 
     def assign_book_to_partner(self):
-        book_id = input("Escribe el código del libro: ")
-        partner_id = input("Escribe el código del socio: ")
-        partner_res = self.partnerController.assign_book(book_id, partner_id)
-        book_res = self.bookController.lend_book(book_id)
-        print(partner_res)
-        print(book_res)
-
+        try:
+            book_id = int(input("Escribe el código del libro: "))
+            partner_id = int(input("Escribe el código del socio: "))
+            self.partnerController.assign_book(book_id, partner_id)
+            self.bookController.lend_book(book_id)
+            print("Libro asignado correctamente")
+        except Exception as e:
+            print("Error al reservar el libro")
 
     def return_book(self):
-        book_id = input("Escribe el código del libro: ")
-        partner_id = input("Escribe el código del socio: ")
-        partner_res = self.partnerController.return_book(book_id, partner_id)
-        book_res = self.bookController.return_book(book_id)
-        print(partner_res)
-        print(book_res)
+        try:
+            book_id = int(input("Escribe el código del libro: "))
+            partner_id = int(input("Escribe el código del socio: "))
+            self.partnerController.return_book(book_id, partner_id)
+            self.bookController.return_book(book_id)
+            print("Libro devuelto correctamente")
+        except Exception as e:
+            print("Error al devolver el libro")
+
 
     def show_partners_with_books(self):
         partners = self.partnerController.partners_with_book()
-
         if len(partners) > 0:
             self.print_list(partners, "partner")
         else:
@@ -134,14 +156,22 @@ class View:
 
 
     def create_partner_view(self):
-        name = input("Nombre: ")
-        email = input("Email: ")
-        phone = input("Numero: ")
-        print(self.partnerController.create_partner(name, email, phone))
+        try:
+            name = input("Nombre: ")
+            email = input("Email: ")
+            phone = input("Numero: ")
+            self.partnerController.create_partner(name, email, phone)
+            print("Socio creado correctamente")
+        except:
+            print("Error al crear el socio")
 
     def create_book_view(self):
-        title = input("Titulo: ")
-        author = input("Autor: ")
-        year = input("Año de lanzamiento: ")
-        category = input("Categoria: ")
-        print(self.bookController.create_book(title, author, year, category))
+        try:
+            title = input("Titulo: ")
+            author = input("Autor: ")
+            year = input("Año de lanzamiento: ")
+            category = input("Categoria: ")
+            self.bookController.create_book(title, author, year, category)
+            print("Libro añadido correctamente")
+        except:
+            print("Error al añadir el libro")

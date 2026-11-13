@@ -1,7 +1,9 @@
 from model.book import Book
+from controllers.log_controller import Log_controller
 class BookController:
     def __init__(self):
         self.books = []
+        self.logger = Log_controller
 
     def load_books(self):
         self.books = []
@@ -69,5 +71,6 @@ class BookController:
             code = self.books[-1].code + 1
             book = Book(code, title, author, year, category, "Libre")
             self.books.append(book)
+            self.logger.write_log(f'Se ha añadido un nuevo libro')
         except:
             raise

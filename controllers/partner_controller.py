@@ -1,8 +1,10 @@
 from model.partner import Partner
+from controllers.log_controller import Log_controller
 
 class PartnerController:
     def __init__(self, partners = None):
         self.partners = partners
+        self.logger = Log_controller()
 
     def load_partners(self):
         try:
@@ -33,6 +35,7 @@ class PartnerController:
             for partner in self.partners:
                 if partner.code == partner_id:
                     partner.books.append(book_id)
+                    self.logger.write_log(f'Se ha asignado el libro {book_id} a el socio {partner_id}')
         except:
             raise
 
@@ -41,6 +44,7 @@ class PartnerController:
             for partner in self.partners:
                 if partner.code == partner_id:
                     partner.books.remove(book_id)
+                    self.logger.write_log(f'El libro {book_id} se ha devuelto por el socio {partner_id}')
         except:
             raise
 
@@ -57,5 +61,6 @@ class PartnerController:
             code = last_partner.code + 1
             partner = Partner(code, name, email, phone)
             self.partners.append(partner)
+            self.logger.write_log(f'Se ha creado un nuevo socio con nombre {name}')
         except:
             raise

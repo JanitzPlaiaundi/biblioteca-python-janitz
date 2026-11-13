@@ -2,9 +2,8 @@ from model.book import Book
 class BookController:
     def __init__(self):
         self.books = []
-        self.charge_books()
 
-    def charge_books(self):
+    def load_books(self):
         self.books = []
         try:
             with open("data/books.txt", "r",encoding="utf-8") as f:
@@ -14,16 +13,21 @@ class BookController:
                     book_info = line.split("|")
                     book = Book(int(book_info[0]), book_info[1], book_info[2], int(book_info[3]), book_info[4], book_info[5].strip())
                     self.books.append(book)
+                return "Libros cargados correctamente"
         except FileNotFoundError as e:
-            print(e.strerror)
+            return e
 
+    def write_books(self):
+        with open("data/books.txt", "w", encoding="utf-8") as f:
+            for book in self.books:
+                f.write(f"{str(book.code)}|{book.title}|{book.author}|{str(book.year)}|{book.category}|{book.state}\n")
+        return "Se han actualizado los libros con exito"
+    
     def list_books(self):
-        self.charge_books()
         return self.books
 
     def available_books(self):
         available_books_list = []
-        self.charge_books()
         for book in self.books:
             if book.state == "Libre":
                 available_books_list.append(book)
@@ -32,44 +36,38 @@ class BookController:
 
     def search_by_name(self, word):
         books_searched = []
-        self.charge_books()
         for book in self.books:
             if word.lower() in book.title.lower():
                 books_searched.append(book)
-
         return books_searched
 
 
     def search_by_id(self, id):
-
-        self.charge_books()
-        for book in self.books:
-            if id == book.code:
-                return book
-        return None
+        try:
+            for book in self.books:
+                if id == book.code:
+                    return book
+        except:
+            raise
 
     def lend_book(self, book_id):
-        book = self.search_by_id(book_id)
-        book.state = "Ocupado"
-        return self.write_books()
-
-    def write_books(self):
-            with open("data/books.txt", "w", encoding="utf-8") as f:
-                for book in self.books:
-                    f.write(f"{str(book.code)}|{book.title}|{book.author}|{str(book.year)}|{book.category}|{book.state}\n")
-            return "Se han actualizado los libros con exito"
+        try:
+            book = self.search_by_id(book_id)
+            book.state = "Ocupado"
+        except Exception as e:
+            return e
 
     def return_book(self, book_id):
-        book = self.search_by_id(book_id)
-        book.state = "Libre"
-        return self.write_books()
+        try:
+            book = self.search_by_id(book_id)
+            book.state = "Libre"
+        except:
+            raise
 
     def create_book(self, title, author, year, category):
         try:
-            self.charge_books
             code = self.books[-1].code + 1
             book = Book(code, title, author, year, category, "Libre")
             self.books.append(book)
-            return self.write_books()
-        except Exception as e:
-            return e
+        except:
+            raise

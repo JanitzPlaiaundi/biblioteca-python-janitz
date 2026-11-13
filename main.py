@@ -5,4 +5,4 @@ from controllers.partner_controller import PartnerController
 bookController = BookController()
 partnerController = PartnerController()
 view = View(bookController, partnerController)
-view.menu()
+view.execute()

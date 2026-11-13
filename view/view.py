@@ -91,10 +91,18 @@ class View:
 
     #Pintar con formatos
     def print_book(self, book):
-        print(f'{book.code} | {book.title}')
+        print(f'Libro {book.title}:')
+        print(f'    Codigo: {book.code}')
+        print(f'    Titulo: {book.title}')
+        print(f'    Año de lanzamiento: {book.year}')
+        print(f'    Categoria: {book.category}\n')
 
     def print_partner(self, partner):
-        print(f'{partner.code}|{partner.name}|{partner.email}|{partner.phone}')
+        print(f'Socio {partner.name}:')
+        print(f'    Codigo: {partner.code}')
+        print(f'    Nombre: {partner.name}')
+        print(f'    Email: {partner.email}')
+        print(f'    Telefono: {partner.phone}\n')
 
     def print_list(self, list, format= "default" ):
         if format == "default":

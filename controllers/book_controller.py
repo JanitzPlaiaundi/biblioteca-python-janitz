@@ -12,7 +12,7 @@ class BookController:
                     if(line == ""):
                         break
                     book_info = line.split("|")
-                    book = Book(book_info[0], book_info[1], book_info[2], book_info[3], book_info[4], book_info[5].strip())
+                    book = Book(int(book_info[0]), book_info[1], book_info[2], int(book_info[3]), book_info[4], book_info[5].strip())
                     self.books.append(book)
         except FileNotFoundError as e:
             print(e.strerror)
@@ -56,10 +56,20 @@ class BookController:
     def write_books(self):
             with open("data/books.txt", "w", encoding="utf-8") as f:
                 for book in self.books:
-                    f.write(f"{book.code}|{book.title}|{book.author}|{book.year}|{book.category}|{book.state}\n")
+                    f.write(f"{str(book.code)}|{book.title}|{book.author}|{str(book.year)}|{book.category}|{book.state}\n")
             return "Se han actualizado los libros con exito"
 
     def return_book(self, book_id):
         book = self.search_by_id(book_id)
         book.state = "Libre"
         return self.write_books()
+
+    def create_book(self, title, author, year, category):
+        try:
+            self.charge_books
+            code = self.books[-1].code + 1
+            book = Book(code, title, author, year, category, "Libre")
+            self.books.append(book)
+            return self.write_books()
+        except Exception as e:
+            return e

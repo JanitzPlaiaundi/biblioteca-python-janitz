@@ -13,9 +13,9 @@ class PartnerController:
 
                     if len(partner_info) > 4:
                         partner_book_codes = [code.strip() for code in partner_info[4].split(",") if code.strip()]
-                        partner = Partner(partner_info[0], partner_info[1], partner_info[2], partner_info[3], partner_book_codes)
+                        partner = Partner(int(partner_info[0]), partner_info[1], partner_info[2], int(partner_info[3]), partner_book_codes)
                     else:
-                        partner = Partner(partner_info[0], partner_info[1], partner_info[2], partner_info[3])
+                        partner = Partner(int(partner_info[0]), partner_info[1], partner_info[2], int(partner_info[3]))
                     self.partners.append(partner)
         except FileNotFoundError as e:
             print(e.strerror)
@@ -42,7 +42,7 @@ class PartnerController:
     def write_partners(self):
         with open("data/partners.txt", "w", encoding="utf-8") as f:
             for partner in self.partners:
-                f.write(f"{partner.code}|{partner.name}|{partner.email}|{partner.phone}|{','.join(partner.books)}\n")
+                f.write(f"{str(partner.code)}|{partner.name}|{partner.email}|{str(partner.phone)}|{','.join(partner.books or [])}\n")
         return "Se han actualizado los socios con exito"
 
     def partners_with_book(self):
@@ -53,4 +53,13 @@ class PartnerController:
                 partners_with_book.append(partner)
         return partners_with_book
 
-
+    def create_partner(self, name, email, phone):
+        self.charge_partners()
+        try:
+            last_partner = self.partners[-1]
+            code = last_partner.code + 1
+            partner = Partner(code, name, email, phone)
+            self.partners.append(partner)
+            return self.write_partners()
+        except Exception as e:
+            return e

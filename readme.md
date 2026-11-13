@@ -30,8 +30,8 @@ A partir de la revisión del código actual, estas son las principales mejoras r
    * *Mejora:* Verificar previamente que tanto el libro (y su estado disponible) como el socio existen antes de confirmar la operación.
 2. **Validación Estricta de Datos de Entrada:**
    * *Mejora:* Validar el formato de correo electrónico, teléfono numérico y año de lanzamiento al crear registros; impedir el uso del carácter delimitador `|` en los textos para no corromper los `.txt`; y sustituir los bloques `except:` genéricos por excepciones específicas (`ValueError`, `FileNotFoundError`, `OSError`).
-5. **Evolución de la Persistencia y Pruebas:**
-   * *Mejora:* Migrar el almacenamiento plano a `JSON` o `SQLite` (nativos en Python) para consultas más robustas, y añadir una batería de tests unitarios (`unittest` o `pytest`) para automatizar la verificación de préstamos y devoluciones.
+3. **Evolución del almacenamiento:**
+   * *Mejora:* Migrar el almacenamiento plano a `JSON` o `SQLite` (nativos en Python) para consultas más robustas.
 
 ---
 
